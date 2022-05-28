@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: craftech
+  namespace: craftechns
+  labels:
+    role: hello
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      role: hello
+      tier: web
+  template:
+    metadata:
+      labels:
+        role: hello
+        tier: web
+    spec:
+      containers:
+      - name: prueba2
+        image: jorue/craftech-project:v1
+        imagePullPolicy: IfNotPresent        
+        ports:
+        - containerPort: 8080
